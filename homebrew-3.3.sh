@@ -20,7 +20,11 @@
 # 2021-04-11 | Some Big Sur cleanup. Posting as 3.3
 
 # Set up variables and functions here
-consoleuser=$(scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }' )
+if [ -z "${CONSOLEUSER}" ]; then
+    consoleuser=$(scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }' )
+else
+    consoleuser="${CONSOLEUSER}"
+fi
 UNAME_MACHINE="$(uname -m)"
 
 
