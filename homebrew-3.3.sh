@@ -46,7 +46,7 @@ else
     HOMEBREW_PREFIX="/usr/local"
 fi
 
-if [[ -e "${HOMEBREW_PREFIX}/bin/brew" ]]; then
+if [[ -x "${HOMEBREW_PREFIX}/bin/brew" ]]; then
     su -l "$consoleuser" -c "${HOMEBREW_PREFIX}/bin/brew update"
     exit 0
 fi
